@@ -23,7 +23,7 @@ VALUES
 INSERT INTO book_publisher
 (book_id, publisher_id)
 VALUES
-((SELECT book_id FROM book WHERE book_title = 'Fundamentals of Computer'), (SELECT publisher_id FROM publisher WHERE publisher_codename = 'NBT'))
+((SELECT book_id FROM book WHERE book_title = 'Fundamentals of Computer'), (SELECT publisher_id FROM publisher WHERE publisher_codename = 'NBT'));
 
 
 -- UPDATE Statements

@@ -62,6 +62,10 @@ INNER JOIN book_publisher bp ON b.book_id =bp.book_id
 INNER JOIN publisher p ON bp.publisher_id = p.publisher_id
 GROUP BY a.author_fname, b.book_title, c.country_name, p.publisher_name; */
 
+UPDATE book
+SET reservation_id = (SELECT reservation_id FROM reservation WHERE (SELECT member_id FROM member WHERE member_membership_id = 'G7890123H56'))
+WHERE book_title = 'The Search Engine Revolution';
+
 -- Main Select Statement
 
 SELECT
@@ -117,3 +121,13 @@ ORDER BY b.book_title ASC;
         WHERE cl.common_lookup_id = m.common_lookup_id
     )       AS 'Member Type'
 FROM member m; */
+
+/* SELECT 
+    b.book_title  AS 'Book Title'
+,   CONCAT(a.author_fname, ' ',IFNULL(author_mname,''), ' ',a.author_lname) AS 'Author Name'
+FROM book b
+INNER JOIN book_author ba
+ON b.book_id = ba.book_id
+INNER JOIN author a
+ON ba.author_id = a.author_id
+WHERE b.book_title = 'Fundamentals of Computer'; */

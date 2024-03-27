@@ -173,3 +173,12 @@ VALUES
 ,   ((SELECT book_id FROM book WHERE book_title = 'Insights into Medical Imaging'), (SELECT publisher_id FROM publisher WHERE publisher_codename = 'NB'))
 ,   ((SELECT book_id FROM book WHERE book_title = 'Machine Learning Essentials'), (SELECT publisher_id FROM publisher WHERE publisher_codename = 'SIPAR'));
 
+INSERT INTO reservation
+(
+    member_id
+,   reservation_start
+,   reservation_end
+)
+VALUES
+    ((SELECT member_id FROM member WHERE member_membership_id = 'G7890123H56'), '2024-01-20', '2024-02-20');
+
