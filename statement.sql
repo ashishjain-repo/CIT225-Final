@@ -62,7 +62,9 @@ INNER JOIN book_publisher bp ON b.book_id =bp.book_id
 INNER JOIN publisher p ON bp.publisher_id = p.publisher_id
 GROUP BY a.author_fname, b.book_title, c.country_name, p.publisher_name; */
 
-SELECT
+-- Main Select Statement
+
+/* SELECT
     b.book_title AS 'Book Title'
 ,   CONCAT(a.author_fname,' ',a.author_mname,' ',a.author_lname) AS 'Book Author'
 ,   l.display AS 'Book Language'
@@ -93,3 +95,25 @@ GROUP BY
 ,   p.publisher_name
 ,   b.reservation_id
 ORDER BY b.book_title ASC;
+ */
+
+
+-- Select to see membership info using subquery
+/* SELECT 
+    CONCAT
+    (
+        m.member_fname,' ',m.member_mname,' ',m.member_lname
+    )       AS 'Member Name'
+,   CONCAT
+        (
+                LEFT(m.member_membership_id,2),'-'
+            ,   SUBSTRING(m.member_membership_id,3,3),'-'
+            ,   RIGHT(m.member_membership_id, 4)
+        )   AS 'Membership Id'
+,   
+    (
+        SELECT cl.member_type 
+        FROM common_lookup cl 
+        WHERE cl.common_lookup_id = m.common_lookup_id
+    )       AS 'Member Type'
+FROM member m; */
