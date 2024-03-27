@@ -29,6 +29,20 @@ VALUES
 -- UPDATE Statements
 UPDATE author
 SET author_mname = NULL
-WHERE (SELECT author_id FROM author WHERE author_fname = 'Vaidyeswaran');
+WHERE author_fname = 'Vaidyeswaran';
 
 -- DELETE Statements
+CREATE TEMPORARY
+TABLE tempList 
+(temp VARCHAR(50));
+
+INSERT INTO tempList 
+(temp)
+VALUES 
+    ('Poetry')
+,   ('Folk Tales');
+
+DELETE FROM genre
+WHERE genre_name IN (SELECT temp FROM tempList);
+
+DROP TEMPORARY TABLE tempList;
