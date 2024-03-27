@@ -30,14 +30,14 @@ INSERT INTO author
 ,   author_dod
 )
 VALUES
-    ((SELECT country_id FROM country WHERE country_code = 'IN'),'Munshi',' ','Premchand','1880-07-31','1936-10-08')
-,   ((SELECT country_id FROM country WHERE country_code = 'EN'),'William',' ','Shakespeare','1564-04-26','1616-04-23')
+    ((SELECT country_id FROM country WHERE country_code = 'IN'),'Munshi',NULL,'Premchand','1880-07-31','1936-10-08')
+,   ((SELECT country_id FROM country WHERE country_code = 'EN'),'William',NULL,'Shakespeare','1564-04-26','1616-04-23')
 ,   ((SELECT country_id FROM country WHERE country_code = 'SA'),'Herman','Charles','Bosman','1905-02-03','1951-10-14')
-,   ((SELECT country_id FROM country WHERE country_code = 'KH'),'Keng',' ','Vannsak','1925-07-19','2008-12-18')
-,   ((SELECT country_id FROM country WHERE country_code = 'IN'), 'Sundar', '', 'Pichai', '1972-06-10', NULL) -- Computer Science
-,   ((SELECT country_id FROM country WHERE country_code = 'EN'), 'Margot', '', 'Fonteyn', '1919-05-18', '1991-02-21') -- Dance
-,   ((SELECT country_id FROM country WHERE country_code = 'SA'), 'Allan', '', 'Cormack', '1924-02-23', '1998-05-07') -- Physics
-,   ((SELECT country_id FROM country WHERE country_code = 'KH'), 'Sourya', '', 'Panda', '1973-08-08', NULL); -- Computer Science
+,   ((SELECT country_id FROM country WHERE country_code = 'KH'),'Keng',NULL,'Vannsak','1925-07-19','2008-12-18')
+,   ((SELECT country_id FROM country WHERE country_code = 'IN'), 'Sundar',NULL, 'Pichai', '1972-06-10', NULL) -- Computer Science
+,   ((SELECT country_id FROM country WHERE country_code = 'EN'), 'Margot',NULL, 'Fonteyn', '1919-05-18', '1991-02-21') -- Dance
+,   ((SELECT country_id FROM country WHERE country_code = 'SA'), 'Allan',NULL, 'Cormack', '1924-02-23', '1998-05-07') -- Physics
+,   ((SELECT country_id FROM country WHERE country_code = 'KH'), 'Sourya',NULL, 'Panda', '1973-08-08', NULL); -- Computer Science
 
 
 
@@ -114,12 +114,12 @@ INSERT INTO member
 )
 VALUES
     ('John', 'Doe', 'Smith', '1990-05-15', (SELECT common_lookup_id FROM common_lookup WHERE member_type = 'Staff'), 'A1234567B90')
-,   ('Alice', '', 'Johnson', '1985-08-20', (SELECT common_lookup_id FROM common_lookup WHERE member_type = 'Faculty'), 'B2345678C01')
-,   ('Emily', 'Grace', 'Brown', '1992-03-10', (SELECT common_lookup_id FROM common_lookup WHERE member_type = 'Student'), 'C3456789D12')
-,   ('Michael', '', 'Taylor', '1988-11-25', (SELECT common_lookup_id FROM common_lookup WHERE member_type = 'Faculty'), 'D4567890E23')
+,   ('Alice', NULL, 'Johnson', '1985-08-20', (SELECT common_lookup_id FROM common_lookup WHERE member_type = 'Faculty'), 'B2345678C01')
+,   ('Emily', NULL, 'Brown', '1992-03-10', (SELECT common_lookup_id FROM common_lookup WHERE member_type = 'Student'), 'C3456789D12')
+,   ('Michael',NULL, 'Taylor', '1988-11-25', (SELECT common_lookup_id FROM common_lookup WHERE member_type = 'Faculty'), 'D4567890E23')
 ,   ('Sarah', 'Elizabeth', 'Clark', '1995-06-05', (SELECT common_lookup_id FROM common_lookup WHERE member_type = 'Student'), 'E5678901F34')
 ,   ('David', 'Robert', 'Miller', '1983-09-30', (SELECT common_lookup_id FROM common_lookup WHERE member_type = 'Faculty'), 'F6789012G45')
-,   ('Emma', '', 'Anderson', '1998-01-12', (SELECT common_lookup_id FROM common_lookup WHERE member_type = 'Student'), 'G7890123H56')
+,   ('Emma', NULL, 'Anderson', '1998-01-12', (SELECT common_lookup_id FROM common_lookup WHERE member_type = 'Student'), 'G7890123H56')
 ,   ('James', 'Patrick', 'White', '1980-07-17', (SELECT common_lookup_id FROM common_lookup WHERE member_type = 'Staff'), 'H8901234I67')
 ,   ('Olivia', 'Jane', 'Robinson', '1993-04-08', (SELECT common_lookup_id FROM common_lookup WHERE member_type = 'Staff'), 'I9012345J78');
 

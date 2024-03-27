@@ -64,9 +64,9 @@ GROUP BY a.author_fname, b.book_title, c.country_name, p.publisher_name; */
 
 -- Main Select Statement
 
-/* SELECT
+SELECT
     b.book_title AS 'Book Title'
-,   CONCAT(a.author_fname,' ',a.author_mname,' ',a.author_lname) AS 'Book Author'
+,   CONCAT(a.author_fname,' ',a.author_lname) AS 'Book Author'
 ,   l.display AS 'Book Language'
 ,   GROUP_CONCAT(g.genre_name SEPARATOR ', ') AS 'Book Genre'
 ,   p.publisher_name AS 'Book Publisher'
@@ -95,7 +95,7 @@ GROUP BY
 ,   p.publisher_name
 ,   b.reservation_id
 ORDER BY b.book_title ASC;
- */
+
 
 
 -- Select to see membership info using subquery
