@@ -46,3 +46,21 @@ DELETE FROM genre
 WHERE genre_name IN (SELECT temp FROM tempList);
 
 DROP TEMPORARY TABLE tempList;
+
+
+-- Removing Reservation
+
+/* SET @memberId = 'G7890123H56';
+
+UPDATE book b
+    INNER JOIN reservation r ON b.reservation_id = r.reservation_id
+    INNER JOIN member m ON r.member_id = m.member_id
+SET 
+    b.reservation_id = null
+,   b.member_id = null
+WHERE m.member_membership_id = @memberId; 
+
+DELETE FROM reservation
+WHERE member_id = (SELECT member_id FROM member WHERE member_membership_id = @memberId);
+*/
+

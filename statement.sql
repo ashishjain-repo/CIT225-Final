@@ -62,13 +62,11 @@ INNER JOIN book_publisher bp ON b.book_id =bp.book_id
 INNER JOIN publisher p ON bp.publisher_id = p.publisher_id
 GROUP BY a.author_fname, b.book_title, c.country_name, p.publisher_name; */
 
-UPDATE book
-SET reservation_id = (SELECT reservation_id FROM reservation WHERE (SELECT member_id FROM member WHERE member_membership_id = 'G7890123H56'))
-WHERE book_title = 'The Search Engine Revolution';
+
 
 -- Main Select Statement
 
-SELECT
+/* SELECT
     b.book_title AS 'Book Title'
 ,   CONCAT(a.author_fname,' ',a.author_lname) AS 'Book Author'
 ,   l.display AS 'Book Language'
@@ -98,7 +96,7 @@ GROUP BY
 ,   c.country_name
 ,   p.publisher_name
 ,   b.reservation_id
-ORDER BY b.book_title ASC;
+ORDER BY b.book_title ASC; */
 
 
 
@@ -131,3 +129,29 @@ ON b.book_id = ba.book_id
 INNER JOIN author a
 ON ba.author_id = a.author_id
 WHERE b.book_title = 'Fundamentals of Computer'; */
+
+/* SET @lenderId = 'G7890123H56';
+
+SELECT b.book_title, m.member_fname
+FROM book b
+INNER JOIN reservation r
+ON b.reservation_id = r.reservation_id
+INNER JOIN member m
+ON r.member_id = m.member_id
+WHERE member_membership_id = @lenderId; */
+
+    
+    
+    /* UPDATE book b
+    LEFT JOIN reservation r ON b.reservation_id = r.reservation_id
+    LEFT JOIN member m ON r.member_id = m.member_id
+    SET
+        b.reservation_id = NULL
+    ,   b.member_id = NULL
+    WHERE m.member_membership_id = @memberId; */
+
+/* DELETE FROM reservation
+WHERE member_id = (SELECT member_id FROM member WHERE member_membership_id = @memberId); */
+
+
+
