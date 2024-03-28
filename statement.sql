@@ -66,7 +66,7 @@ GROUP BY a.author_fname, b.book_title, c.country_name, p.publisher_name; */
 
 -- Main Select Statement
 
-/* SELECT
+SELECT
     b.book_title AS 'Book Title'
 ,   CONCAT(a.author_fname,' ',a.author_lname) AS 'Book Author'
 ,   l.display AS 'Book Language'
@@ -96,7 +96,7 @@ GROUP BY
 ,   c.country_name
 ,   p.publisher_name
 ,   b.reservation_id
-ORDER BY b.book_title ASC; */
+ORDER BY b.book_title ASC;
 
 
 
@@ -155,3 +155,95 @@ WHERE member_id = (SELECT member_id FROM member WHERE member_membership_id = @me
 
 
 
+/* INSERT INTO reservation
+(
+    member_id
+,   reservation_start
+,   reservation_end
+)
+VALUES
+    ((SELECT member_id FROM member WHERE member_membership_id = @memberId), '2024-01-20', '2024-02-20');
+
+UPDATE book
+SET 
+    reservation_id = (SELECT reservation_id FROM reservation WHERE (SELECT member_id FROM member WHERE member_membership_id = @memberId))
+,   member_id = (SELECT member_id FROM member WHERE member_membership_id = @memberId)
+WHERE book_title = 'The Search Engine Revolution'; */
+
+/* SET @memberId = 'G7890123H56';
+
+UPDATE book b
+    INNER JOIN reservation r ON b.reservation_id = r.reservation_id
+    INNER JOIN member m ON r.member_id = m.member_id
+SET 
+    b.reservation_id = null
+,   b.member_id = null
+WHERE m.member_membership_id = @memberId; 
+
+DELETE FROM reservation
+WHERE member_id = (SELECT member_id FROM member WHERE member_membership_id = @memberId); */
+
+-- Member Name Change Form
+/* SELECT 
+    member_fname
+,   member_mname
+,   member_lname
+FROM member
+WHERE member_membership_id = 'I9012345J78'; */
+
+/* SET @memberId = 'I9012345J78';
+SET @updatedName = 'Kane';
+
+UPDATE member
+SET member_mname = @updatedName
+WHERE member_membership_id = @memberId; */
+
+-- ----------------------------------------------------------!
+-- INSERT FOR FORM
+
+/* SET @bookTitle = 'Godan - The Gift of a Cow';
+SET @bookSubject = 'Arts & Literature';
+SET @isbn10 = '9386000679';
+SET @isbn13 = '9789386000675';
+SET @authorFname = 'Munshi';
+SET @authorLname = 'Premchand';
+SET @publisherCode = 'NBT';
+SET @bookGenre = 'Drama';
+SET @bookOrigin = 'IN';
+SET @bookLanguage = 'HI';
+
+INSERT INTO book
+(
+    subject_id
+,   country_id
+,   book_title
+,   book_isbn_new
+,   book_isbn
+,   lang_lang_id
+)
+VALUES
+    ((SELECT subject_id FROM subject WHERE subject_name = @bookSubject), (SELECT country_id FROM country WHERE country_code = @bookOrigin), @bookTitle, @isbn13, @isbn10, @bookLanguage);
+
+INSERT INTO book_author
+(
+    book_id
+,   author_id
+)
+VALUES
+    ((SELECT book_id FROM book WHERE book_title = @bookTitle), (SELECT author_id FROM author WHERE author_fname = @authorFname));
+
+INSERT INTO book_genre
+(
+    book_id
+,   genre_id
+)
+VALUES
+    ((SELECT book_id FROM book WHERE book_title = @bookTitle), (SELECT genre_id FROM genre WHERE genre_name = @bookGenre));
+
+INSERT INTO book_publisher
+(
+    book_id
+,   publisher_id
+)
+VALUES
+    ((SELECT book_id FROM book WHERE book_title = @bookTitle), (SELECT publisher_id FROM publisher WHERE publisher_codename = @publisherCode)); */

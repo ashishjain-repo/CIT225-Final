@@ -189,3 +189,4 @@ SET
     reservation_id = (SELECT reservation_id FROM reservation WHERE (SELECT member_id FROM member WHERE member_membership_id = @memberId))
 ,   member_id = (SELECT member_id FROM member WHERE member_membership_id = @memberId)
 WHERE book_title = 'The Search Engine Revolution';
+

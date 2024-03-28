@@ -64,3 +64,5 @@ DELETE FROM reservation
 WHERE member_id = (SELECT member_id FROM member WHERE member_membership_id = @memberId);
 */
 
+
+

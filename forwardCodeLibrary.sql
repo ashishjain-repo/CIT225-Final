@@ -148,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `library`.`book` (
   `reservation_id` INT UNSIGNED NULL,
   `country_id` INT UNSIGNED NOT NULL,
   `book_title` VARCHAR(100) NOT NULL,
-  `book_isbn` INT UNSIGNED NULL,
+  `book_isbn` BIGINT(10) UNSIGNED NULL,
   `book_isbn_new` BIGINT(13) UNSIGNED NULL,
   `lang_lang_id` CHAR(2) NOT NULL,
   PRIMARY KEY (`book_id`),
