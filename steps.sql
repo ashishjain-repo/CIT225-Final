@@ -1,6 +1,9 @@
--- INSERT Statements
 
-INSERT INTO author
+
+-- Step 1 
+-- (5 Inserts Performed)
+
+/* INSERT INTO author
 (country_id, author_fname, author_mname, author_lname, author_dob, author_dod)
 VALUES
 ((SELECT country_id FROM country WHERE country_code = 'IN'),'Vaidyeswaran','Sarada','Rajaraman','1933-01-10',NULL);
@@ -23,16 +26,20 @@ VALUES
 INSERT INTO book_publisher
 (book_id, publisher_id)
 VALUES
-((SELECT book_id FROM book WHERE book_title = 'Fundamentals of Computer'), (SELECT publisher_id FROM publisher WHERE publisher_codename = 'NBT'));
+((SELECT book_id FROM book WHERE book_title = 'Fundamentals of Computer'), (SELECT publisher_id FROM publisher WHERE publisher_codename = 'NBT')); */
 
+-- Step 2
+-- (1 Update Performed)
 
--- UPDATE Statements
-UPDATE author
+/* UPDATE author
 SET author_mname = NULL
-WHERE author_id = (SELECT author_id FROM author WHERE author_fname = 'Vaidyeswaran');
+WHERE author_fname = 'Vaidyeswaran'; */
 
--- DELETE Statements
-CREATE TEMPORARY
+
+-- Step 3
+-- (1 Table Creation, Drop Table, Insert and Delete Performed)
+
+/* CREATE TEMPORARY
 TABLE tempList 
 (temp VARCHAR(50));
 
@@ -45,10 +52,30 @@ VALUES
 DELETE FROM genre
 WHERE genre_name IN (SELECT temp FROM tempList);
 
-DROP TEMPORARY TABLE tempList;
+DROP TEMPORARY TABLE tempList; */
+
+-- Step 4
+-- (1 Insert and Update Performed)
 
 
--- Removing Reservation
+/* SET @memberId = 'G7890123H56';
+INSERT INTO reservation
+(
+    member_id
+,   reservation_start
+,   reservation_end
+)
+VALUES
+    ((SELECT member_id FROM member WHERE member_membership_id = @memberId), '2024-01-20', '2024-02-20');
+
+UPDATE book
+SET 
+    reservation_id = (SELECT reservation_id FROM reservation WHERE (SELECT member_id FROM member WHERE member_membership_id = @memberId))
+,   member_id = (SELECT member_id FROM member WHERE member_membership_id = @memberId)
+WHERE book_title = 'The Search Engine Revolution'; */
+
+-- Step 5
+-- (1 Update and Delete performed)
 
 /* SET @memberId = 'G7890123H56';
 
@@ -61,8 +88,12 @@ SET
 WHERE m.member_membership_id = @memberId; 
 
 DELETE FROM reservation
-WHERE member_id = (SELECT member_id FROM member WHERE member_membership_id = @memberId);
-*/
+WHERE member_id = (SELECT member_id FROM member WHERE member_membership_id = @memberId); */
 
+-- Step 6
+-- (1 Delete performed)
 
+/* DELETE FROM subject
+WHERE subject_id NOT IN(SELECT subject_id FROM book); */
 
+-- Total: 6 Inserts, 3 Deletes, and 3 Updates Performed

@@ -173,20 +173,5 @@ VALUES
 ,   ((SELECT book_id FROM book WHERE book_title = 'Insights into Medical Imaging'), (SELECT publisher_id FROM publisher WHERE publisher_codename = 'NB'))
 ,   ((SELECT book_id FROM book WHERE book_title = 'Machine Learning Essentials'), (SELECT publisher_id FROM publisher WHERE publisher_codename = 'SIPAR'));
 
-SET @memberId = 'G7890123H56';
 
-INSERT INTO reservation
-(
-    member_id
-,   reservation_start
-,   reservation_end
-)
-VALUES
-    ((SELECT member_id FROM member WHERE member_membership_id = @memberId), '2024-01-20', '2024-02-20');
-
-UPDATE book
-SET 
-    reservation_id = (SELECT reservation_id FROM reservation WHERE (SELECT member_id FROM member WHERE member_membership_id = @memberId))
-,   member_id = (SELECT member_id FROM member WHERE member_membership_id = @memberId)
-WHERE book_title = 'The Search Engine Revolution';
 
